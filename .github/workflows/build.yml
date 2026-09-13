@@ -23,12 +23,6 @@ jobs:
         pip install --upgrade pip
         pip install buildozer cython==0.29.33
 
-    - name: Initialize Buildozer and Accept Licenses
-      run: |
-        buildozer init
-        sed -i 's/#android.accept_sdk_license = False/android.accept_sdk_license = True/g' buildozer.spec
-        sed -i 's/requirements = python3,kivy/requirements = python3,pygame/' buildozer.spec
-
     - name: Build with Buildozer
       run: |
         buildozer -v android debug
